@@ -114,17 +114,17 @@ public class Utils {
     }
 
     public static boolean isCompatible(UpdateBaseInfo update) {
-        if (!SystemProperties.getBoolean(Constants.PROP_UPDATER_ALLOW_DOWNGRADING, false) &&
-                update.getTimestamp() <= SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
-            Log.d(TAG, update.getName() + " is older than/equal to the current build");
-            return false;
-        }
-            return true;
+    	if (update.getTimestamp() <= SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
+    	    return SystemProperties.getBoolean(Constants.PROP_UPDATER_ALLOW_DOWNGRADING, false);
+    	}
+        return update.getTimestamp() != SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0);
     }
 
     public static boolean canInstall(UpdateBaseInfo update) {
-        return (SystemProperties.getBoolean(Constants.PROP_UPDATER_ALLOW_DOWNGRADING, false) ||
-                update.getTimestamp() > SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0));
+    	if (update.getTimestamp() <= SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0)) {
+    	    return SystemProperties.getBoolean(Constants.PROP_UPDATER_ALLOW_DOWNGRADING, false);
+    	}
+        return update.getTimestamp() != SystemProperties.getLong(Constants.PROP_BUILD_DATE, 0);
     }
 
     public static List<UpdateInfo> parseJson(File file, boolean compatibleOnly)
@@ -160,24 +160,27 @@ public class Utils {
     }
 
     public static String getServerURL(Context context) {
-        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
-                SystemProperties.get(Constants.PROP_DEVICE));
+        String device = SystemProperties.get(Constants.PROP_DEVICE,
+                SystemProperties.get(Constants.RICE_PROP_DEVICE));
 
         String serverUrl = context.getString(R.string.updater_server_url);
 
-        return serverUrl.replace("{device}", device);
+        return serverUrl + device + ".json";
     }
 
     public static String getUpgradeBlockedURL(Context context) {
-        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
-                SystemProperties.get(Constants.PROP_DEVICE));
+        String device = SystemProperties.get(Constants.PROP_DEVICE,
+                SystemProperties.get(Constants.RICE_PROP_DEVICE));
         return context.getString(R.string.blocked_update_info_url, device);
     }
 
     public static String getChangelogURL(Context context) {
-        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
-                SystemProperties.get(Constants.PROP_DEVICE));
-        return context.getString(R.string.menu_changelog_url, device);
+        String device = SystemProperties.get(Constants.PROP_DEVICE,
+                SystemProperties.get(Constants.RICE_PROP_DEVICE));
+                
+        String menuChangelogUrl = context.getString(R.string.menu_changelog_url);
+
+        return menuChangelogUrl + device + ".txt";
     }
 
     public static void triggerUpdate(Context context, String downloadId) {

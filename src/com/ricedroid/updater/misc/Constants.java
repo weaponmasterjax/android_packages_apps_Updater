@@ -40,7 +40,8 @@ public final class Constants {
     public static final String PROP_AB_DEVICE = "ro.build.ab_update";
     public static final String PROP_BUILD_DATE = "ro.build.date.utc";
     public static final String PROP_BUILD_VERSION = "ro.modversion";
-    public static final String PROP_DEVICE = "ro.crdroid.device";
+    public static final String PROP_DEVICE = "ro.product.device";
+    public static final String RICE_PROP_DEVICE = "ro.rice.device";
     public static final String PROP_NEXT_DEVICE = "ro.updater.next_device";
     public static final String PROP_UPDATER_ALLOW_DOWNGRADING = "ricedroid.updater.allow_downgrading";
 
