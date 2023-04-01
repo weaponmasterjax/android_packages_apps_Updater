@@ -1,1 +1,1 @@
--keep class com.ricedroid.updater.ui.FlingBehavior { *; }
+-keep class org.risingos.updater.ui.FlingBehavior { *; }

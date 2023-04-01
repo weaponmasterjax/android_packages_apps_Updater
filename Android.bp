@@ -42,23 +42,23 @@ android_app {
     },
 
     required: [
-        "privapp_whitelist_com.ricedroid.updater",
-        "default-permissions_com.ricedroid.updater"
+        "privapp_whitelist_org.risingos.updater",
+        "default-permissions_org.risingos.updater"
     ],
 }
 
 prebuilt_etc {
-    name: "privapp_whitelist_com.ricedroid.updater",
+    name: "privapp_whitelist_org.risingos.updater",
     system_ext_specific: true,
     sub_dir: "permissions",
-    src: "privapp_whitelist_com.ricedroid.updater.xml",
+    src: "privapp_whitelist_org.risingos.updater.xml",
     filename_from_src: true,
 }
 
 prebuilt_etc {
-    name: "default-permissions_com.ricedroid.updater",
+    name: "default-permissions_org.risingos.updater",
     system_ext_specific: true,
     sub_dir: "default-permissions",
-    src: "default-permissions_com.ricedroid.updater.xml",
+    src: "default-permissions_org.risingos.updater.xml",
     filename_from_src: true,
 }

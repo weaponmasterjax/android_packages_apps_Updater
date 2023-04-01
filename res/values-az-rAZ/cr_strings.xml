@@ -22,7 +22,7 @@
     <string name="current_build_type">Current build type: <xliff:g id="build_type" example="Type">%1$s</xliff:g></string>
     <string name="build_type_unknown">Qeyri-rəsmi və ya çatışmayan OTA məlumatı</string>
     <string name="info_dialog_title">bilirdinizmi?</string>
-    <string name="info_dialog_message">riceDroid yeniləmələri tam quraşdırma paketləridir. Bu o deməkdir ki, aralarında bəzilərini atlasanız belə, həmişə yalnız ən son yeniləməni quraşdıra bilərsiniz!</string>
+    <string name="info_dialog_message">risingOS yeniləmələri tam quraşdırma paketləridir. Bu o deməkdir ki, aralarında bəzilərini atlasanız belə, həmişə yalnız ən son yeniləməni quraşdıra bilərsiniz!</string>
     <string name="info_dialog_ok">Məlumat üçün təşəkkür edirik!</string>
     <string name="local_update_import">Yerli yeniləmə</string>
     <string name="local_update_import_progress">Yerli güncəlləmə import edilir\u2026</string>
